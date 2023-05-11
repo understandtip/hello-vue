@@ -8,10 +8,14 @@
             <template slot="title"><i class="el-icon-caret-right"></i>用户管理</template>
             <el-menu-item-group>
               <el-menu-item index="1-1">
-                <router-link to="/user/profile">个人信息</router-link>
+                <!-- name-传组件名params传递参数，需要对象:v-bind -->
+                <router-link :to="{ name: 'UserProfile', params: { id: 1 } }">个人信息</router-link>
               </el-menu-item>
               <el-menu-item index="1-2">
                 <router-link to="/user/list">用户列表</router-link>
+              </el-menu-item>
+              <el-menu-item index="1-3">
+                <router-link to="/home">回到首页</router-link>
               </el-menu-item>
             </el-menu-item-group>
           </el-submenu>
@@ -34,6 +38,7 @@
               <el-dropdown-item>退出登陆</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
+          {{username}}
         </el-header>
 
         <el-main>
@@ -47,6 +52,7 @@
 
 <script>
 export default {
+  props:['username'],
   name:"Main"
 }
 </script>
