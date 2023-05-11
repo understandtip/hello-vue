@@ -13,27 +13,26 @@ export default {
   name: "UserProfile",
   //类似于过滤器    (HttpServletRequest request, HttpServletResponse response,FilterChain chain)
   beforeRouteEnter: (to,from, next)=>{
-    //展示数据
-    console.log("进入路由之前");
-    next(vm => {
+    console.log("进入页面之前");
+    next(vm => {  //展示数据
       vm.getData();
     });
   },
   beforeRouteLeave: (to,from, next)=>{
-    console.log("退出路由之前");
+    console.log("退出页面之前");
     next();
   },
   methods:{
-    getData:function (){
-      /*this.axios.get('http://localhost:8080/static/mock/data.json').then(res => {
-        console.log(res);
-      })*/
-      this.axios({
-          method:'get',
-          url:'http://localhost:8080/static/mock/data.json'
-      }).then(function (res) {
+    getData(){
+      this.axios.get('http://localhost:8080/static/mock/data.json').then(res => {
         console.log(res);
       })
+      /*this.axios({
+          method:'get',
+          url:'http://localhost:8080/static/mock/data.json'
+      }).then(res => {
+        console.log(res);
+      })*/
     }
   }
 }
